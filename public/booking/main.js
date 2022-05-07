@@ -1,4 +1,19 @@
+function getParameterByName(name, url = window.location.href) {
+  name = name.replace(/[\[\]]/g, '\\$&');
+  var regex = new RegExp('[?&]' + name + '(=([^&#]*)|&|#|$)'),
+      results = regex.exec(url);
+  if (!results) return null;
+  if (!results[2]) return '';
+  return decodeURIComponent(results[2].replace(/\+/g, ' '));
+}
+var id = getParameterByName('id');
+console.log(id); 
+ const m= async ()=>{
+  await google.maps.event.addDomListener(window, 'load', initialize);
 
+ }
+ m()
+//Load google map
 var position = [11.123, 77.8083];
 var pinIcon = new google.maps.MarkerImage(
   "/car.png",
@@ -25,8 +40,7 @@ function initialize() {
 
 }
 
-//Load google map
-google.maps.event.addDomListener(window, 'load', initialize);
+
 
 
 var numDeltas = 100;
@@ -77,7 +91,7 @@ function getData() {
   let d = {
     db: "Booking",
     on: "change",
-    id: '6264069c7cebb5ba138707c3',
+    id: id,
     by: "admin",
   }
 
